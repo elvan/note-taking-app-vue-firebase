@@ -1,6 +1,11 @@
 <template>
   <div class="notes">
-    <AddEditNote v-model="newNote" ref="addEditNoteRef">
+    <AddEditNote
+      v-model="newNote"
+      placeholder="Add a new note"
+      label="Add Note"
+      ref="addEditNoteRef"
+    >
       <template #buttons>
         <button
           @click="addNote"
