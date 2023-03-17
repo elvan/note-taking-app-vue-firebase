@@ -19,9 +19,11 @@
       </tbody>
     </table>
     <input
+      v-model="loveNoteTaking"
       class="input"
       type="text"
-      placeholder="Do you love NoteTakingApp??"
+      placeholder="Do you love NoteTakingApp?"
+      maxlength="100"
       v-autofocus
     />
   </div>
@@ -34,10 +36,19 @@
 
 import { vAutofocus } from '@/directives/vAutofocus';
 import { useStoreNotes } from '@/stores/storeNotes';
+import { useWatchCharacters } from '@/use/useWatchCharacters';
+import { ref } from 'vue';
 
 /*
   store
 */
 
 const storeNotes = useStoreNotes();
+
+/*
+  love loveNoteTaking
+*/
+
+const loveNoteTaking = ref('');
+useWatchCharacters(loveNoteTaking, 100);
 </script>
