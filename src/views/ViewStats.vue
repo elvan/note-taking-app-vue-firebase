@@ -18,6 +18,12 @@
         </tr>
       </tbody>
     </table>
+    <input
+      class="input"
+      type="text"
+      placeholder="Do you love NoteTakingApp??"
+      v-autofocus
+    />
   </div>
 </template>
 
@@ -26,6 +32,7 @@
   imports
 */
 
+import { vAutofocus } from '@/directives/vAutofocus';
 import { useStoreNotes } from '@/stores/storeNotes';
 
 /*

@@ -2,7 +2,9 @@
   <nav class="navbar is-success" aria-label="main navigation" role="navigation">
     <div class="container is-max-desktop px-2">
       <div class="navbar-brand">
-        <div class="navbar-item is-size-4 is-family-monospace">NoteTaking</div>
+        <div class="navbar-item is-size-4 is-family-monospace">
+          NoteTakingApp
+        </div>
 
         <a
           @click.prevent="showMobileNav = !showMobileNav"

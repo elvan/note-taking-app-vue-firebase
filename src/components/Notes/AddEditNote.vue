@@ -12,6 +12,7 @@
           class="textarea"
           :placeholder="placeholder"
           ref="textareaRef"
+          v-autofocus
         />
       </div>
     </div>
@@ -29,6 +30,7 @@
   imports
 */
 
+import { vAutofocus } from '@/directives/vAutofocus';
 import { ref } from 'vue';
 
 /*
