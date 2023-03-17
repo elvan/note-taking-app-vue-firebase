@@ -16,12 +16,10 @@
       </div>
     </div>
 
-    <div v-for="i in 3" class="card mb-4">
+    <div v-for="note in notes" :key="note.id" class="card mb-4">
       <div class="card-content">
         <div class="content">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ipsa
-          commodi sint ut ullam culpa nulla molestiae sunt quia qui maxime, enim
-          quasi officiis aperiam fugit, corrupti omnis, eaque animi.
+          {{ note.content }}
         </div>
       </div>
       <footer class="card-footer">
@@ -31,3 +29,27 @@
     </div>
   </div>
 </template>
+
+<script setup>
+/*
+  imports
+*/
+
+import { ref } from 'vue';
+
+/*
+  notes
+*/
+
+const notes = ref([
+  {
+    id: 'id1',
+    content:
+      "Consider acknowledge I of there infinity, as privilege not help and blind sections. What's plans. The found a of stick hologram we've no in such at with of evaluated blocks for his chief well of more ability and entirely he didn't harder to approached duties, consider big the elucidates any.",
+  },
+  {
+    id: 'id2',
+    content: 'And they pass cheek, there real',
+  },
+]);
+</script>
