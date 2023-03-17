@@ -8,10 +8,11 @@
       ref="addEditNoteRef"
     >
       <template #buttons>
-        <button @click="$router.back()" class="button is-link is-light">
+        <button @click="$router.back()" class="button is-link is-light mr-2">
           Cancel
         </button>
         <button
+          @click="handleSaveClicked"
           class="button is-link has-background-link"
           :disabled="!noteContent"
         >
@@ -30,13 +31,14 @@
 import AddEditNote from '@/components/Notes/AddEditNote.vue';
 import { useStoreNotes } from '@/stores/storeNotes';
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 /*
   router
 */
 
 const route = useRoute();
+const router = useRouter();
 
 /*
   store
@@ -50,7 +52,14 @@ const storeNotes = useStoreNotes();
 
 const noteContent = ref('');
 
-console.log(route.params.id);
-
 noteContent.value = storeNotes.getNoteContent(route.params.id);
+
+/*
+  save clicked
+*/
+
+const handleSaveClicked = () => {
+  storeNotes.updateNote(route.params.id, noteContent.value);
+  router.push('/');
+};
 </script>
