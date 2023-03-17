@@ -13,6 +13,11 @@ export const useStoreNotes = defineStore('storeNotes', {
           id: 'id2',
           content: 'And they pass cheek, there real',
         },
+        {
+          id: 'id3',
+          content:
+            'Embarkation with said from horses design important. To fur or his how name stands been founder, pain forth. The human the and how invitation but not, having needs considerations, the preparations however far to that yet by approved royal tell have on drops. Concepts the brief is that was intended.',
+        },
       ],
     };
   },
