@@ -1,4 +1,5 @@
 import { auth } from '@/js/firebase';
+import { useStoreNotes } from '@/stores/storeNotes';
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -15,11 +16,14 @@ export const useStoreAuth = defineStore('storeAuth', {
   },
   actions: {
     init() {
+      const storeNotes = useStoreNotes();
+
       onAuthStateChanged(auth, (user) => {
         if (user) {
           this.user.id = user.uid;
           this.user.email = user.email;
           this.router.push('/');
+          storeNotes.init();
         } else {
           this.user = {};
           this.router.replace('/auth');
