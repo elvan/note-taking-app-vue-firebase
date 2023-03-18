@@ -12,6 +12,22 @@
 */
 
 import NavBar from '@/components/Layout/NavBar.vue';
+import { useStoreNotes } from '@/stores/storeNotes';
+import { onMounted } from 'vue';
+
+/*
+  store
+*/
+
+const storeNotes = useStoreNotes();
+
+/*
+  mounted
+*/
+
+onMounted(() => {
+  storeNotes.getNotes();
+});
 </script>
 
 <style>
