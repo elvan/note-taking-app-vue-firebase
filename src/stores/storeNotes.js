@@ -35,19 +35,25 @@ export const useStoreNotes = defineStore('storeNotes', {
     async getNotes() {
       this.notesLoaded = false;
 
-      getNotesSnapshot = onSnapshot(notesCollectionQuery, (querySnapshot) => {
-        let notes = [];
-        querySnapshot.forEach((doc) => {
-          let note = {
-            id: doc.id,
-            content: doc.data().content,
-            date: doc.data().date,
-          };
-          notes.push(note);
-        });
-        this.notes = notes;
-        this.notesLoaded = true;
-      });
+      getNotesSnapshot = onSnapshot(
+        notesCollectionQuery,
+        (querySnapshot) => {
+          let notes = [];
+          querySnapshot.forEach((doc) => {
+            let note = {
+              id: doc.id,
+              content: doc.data().content,
+              date: doc.data().date,
+            };
+            notes.push(note);
+          });
+          this.notes = notes;
+          this.notesLoaded = true;
+        },
+        (error) => {
+          console.log('error.message: ', error.message);
+        }
+      );
     },
     clearNotes() {
       this.notes = [];
