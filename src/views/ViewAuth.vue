@@ -16,12 +16,40 @@
         <div class="title has-text-centered">
           {{ formTitle }}
         </div>
-        <div class="content">
-          Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros.
-          Donec id elit non mi porta gravida at eget metus. Cum sociis natoque
-          penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          Cras mattis consectetur purus sit amet fermentum.
-        </div>
+
+        <form @submit.prevent="onSubmit">
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input
+                v-model="credentials.email"
+                class="input"
+                placeholder="e.g. alexsmith@gmail.com"
+                type="email"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input
+                v-model="credentials.password"
+                class="input"
+                placeholder="Enter a password"
+                type="password"
+              />
+            </div>
+          </div>
+
+          <div class="field is-grouped is-grouped-right">
+            <p class="control">
+              <button class="button is-primary">
+                {{ formTitle }}
+              </button>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -32,7 +60,7 @@
   imports
 */
 
-import { computed, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 
 /*
   register / login
@@ -47,6 +75,31 @@ const register = ref(false);
 const formTitle = computed(() => {
   return register.value ? 'Register' : 'Login';
 });
+
+/*
+  credentials
+*/
+
+const credentials = reactive({
+  email: '',
+  password: '',
+});
+
+/*
+  submit
+*/
+
+const onSubmit = () => {
+  if (!credentials.email || !credentials.password) {
+    alert('Please enter an email and password gosh darnit!');
+  } else {
+    if (register.value) {
+      console.log('Register user with these credentials:', credentials);
+    } else {
+      console.log('Login user with these credentials:', credentials);
+    }
+  }
+};
 </script>
 
 <style>
