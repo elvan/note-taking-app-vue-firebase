@@ -30,10 +30,11 @@
       >
         <div class="navbar-start">
           <button
-            @click="storeAuth.logoutUser"
+            v-if="storeAuth.user.id"
+            @click="logout"
             class="button is-small is-info mt-3 ml-3"
           >
-            Log out
+            Log out {{ storeAuth.user.email }}
           </button>
         </div>
         <div class="navbar-end">
@@ -96,6 +97,15 @@ onClickOutside(
     ignore: [navbarBurgerRef],
   }
 );
+
+/*
+  logout
+*/
+
+const logout = () => {
+  showMobileNav.value = false;
+  storeAuth.logoutUser();
+};
 </script>
 
 <style>
