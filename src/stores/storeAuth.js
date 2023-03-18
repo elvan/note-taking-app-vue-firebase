@@ -1,6 +1,7 @@
 import { auth } from '@/js/firebase';
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
@@ -8,9 +9,21 @@ import { defineStore } from 'pinia';
 
 export const useStoreAuth = defineStore('storeAuth', {
   state: () => {
-    return {};
+    return {
+      user: {},
+    };
   },
   actions: {
+    init() {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.user.id = user.uid;
+          this.user.email = user.email;
+        } else {
+          this.user = {};
+        }
+      });
+    },
     registerUser(credentials) {
       createUserWithEmailAndPassword(
         auth,
