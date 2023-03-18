@@ -2,18 +2,18 @@
   <div class="edit-note">
     <AddEditNote
       v-model="noteContent"
-      bgColor="link"
+      bgColor="info"
       placeholder="Edit note"
       label="Edit Note"
       ref="addEditNoteRef"
     >
       <template #buttons>
-        <button @click="$router.back()" class="button is-link is-light mr-2">
+        <button @click="$router.back()" class="button is-info is-light mr-2">
           Cancel
         </button>
         <button
           @click="handleSaveClicked"
-          class="button is-link has-background-link"
+          class="button is-link has-background-info"
           :disabled="!noteContent"
         >
           Save Note

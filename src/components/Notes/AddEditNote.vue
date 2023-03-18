@@ -45,7 +45,7 @@ const props = defineProps({
   },
   bgColor: {
     type: String,
-    default: 'success',
+    default: 'primary',
   },
   placeholder: {
     type: String,

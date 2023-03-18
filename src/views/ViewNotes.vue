@@ -18,7 +18,7 @@
 
     <progress
       v-if="!storeNotes.notesLoaded"
-      class="progress is-large is-success"
+      class="progress is-large is-info"
       max="100"
     />
 
